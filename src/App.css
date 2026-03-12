@@ -1,0 +1,284 @@
+.dashboard {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  padding: 16px;
+  position: relative;
+  background: var(--bg-dark);
+}
+
+/* Corner widgets */
+.widget-slot {
+  z-index: 1;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+  overflow: hidden;
+}
+
+.widget-slot > * {
+  height: 100%;
+}
+
+.widget-slot:hover {
+  transform: scale(1.01);
+}
+
+.widget-slot.top-left { grid-column: 1; grid-row: 1; }
+.widget-slot.top-right { grid-column: 3; grid-row: 1; }
+.widget-slot.bottom-left { grid-column: 1; grid-row: 2; }
+.widget-slot.bottom-right { grid-column: 3; grid-row: 2; }
+
+/* Center panel */
+.center-panel {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.center-panel > *:not(.close-btn) {
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.center-panel .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: 1px solid var(--cyan-dim);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.center-panel .close-btn:hover {
+  background: rgba(0, 255, 255, 0.1);
+}
+
+/* Clock default */
+.clock-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+}
+
+.clock-display .clock-time {
+  font-size: 94px;
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+
+.clock-display .clock-standard {
+  font-size: 31px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  letter-spacing: 3px;
+}
+
+.clock-display .clock-date {
+  font-size: 21px;
+  color: var(--text-dim);
+  margin-top: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.clock-display .clock-status {
+  font-size: 14px;
+  color: var(--cyan-dim);
+  margin-top: 24px;
+}
+
+.clock-display .wallpaper-switcher {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  font-size: 10px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.clock-display .wallpaper-switcher select {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+.clock-display .wallpaper-switcher select:focus {
+  border-color: var(--cyan-dim);
+  margin-top: 24px;
+}
+
+/* Settings button */
+.settings-toggle {
+  position: fixed;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.settings-toggle:hover {
+  color: var(--cyan);
+  border-color: var(--cyan-dim);
+}
+
+/* Settings Panel Overlay */
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-panel {
+  width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.settings-panel h2 {
+  font-size: 14px;
+  color: var(--cyan);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.settings-panel .setting-group {
+  margin-bottom: 20px;
+}
+
+.settings-panel .setting-group label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.settings-panel .setting-group input,
+.settings-panel .setting-group select {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  outline: none;
+}
+
+.settings-panel .setting-group input:focus {
+  border-color: var(--cyan-dim);
+}
+
+.settings-panel .toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.settings-panel .toggle-switch {
+  position: relative;
+  width: 36px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.settings-panel .toggle-switch.active {
+  background: var(--cyan-dim);
+}
+
+.settings-panel .toggle-switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: var(--text);
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.settings-panel .toggle-switch.active::after {
+  transform: translateX(18px);
+}
+
+/* Boot sequence */
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-dark);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boot-screen .boot-content {
+  font-size: 13px;
+  line-height: 2;
+  max-width: 400px;
+}
+
+.boot-screen .boot-line {
+  opacity: 0;
+}
+
+.boot-screen .boot-line.visible {
+  opacity: 1;
+}
+
+.boot-screen .boot-ok {
+  color: var(--cyan);
+}
+
+@keyframes bootFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.boot-screen.fading {
+  animation: bootFadeOut 0.6s ease forwards;
+}

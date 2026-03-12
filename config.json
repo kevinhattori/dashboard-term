@@ -1,0 +1,33 @@
+{
+  "weather": {
+    "latitude": 44.9778,
+    "longitude": -93.2650,
+    "location_label": "Minneapolis, MN",
+    "units": "fahrenheit",
+    "refresh_interval_minutes": 15
+  },
+  "sports": {
+    "primary_teams": [
+      { "name": "Timberwolves", "league": "nba", "espn_id": "MIN" },
+      { "name": "Wild", "league": "nhl", "espn_id": "MIN" },
+      { "name": "Vikings", "league": "nfl", "espn_id": "MIN" }
+    ],
+    "leagues": ["nfl", "nba", "nhl"],
+    "refresh_interval_minutes": 2
+  },
+  "news": {
+    "feeds": [
+      { "label": "THE VERGE", "url": "https://www.theverge.com/rss/index.xml", "category": "tech" },
+      { "label": "ARS", "url": "https://feeds.arstechnica.com/arstechnica/index", "category": "tech" },
+      { "label": "REUTERS", "url": "https://feeds.reuters.com/reuters/topNews", "category": "general" },
+      { "label": "REUTERS BIZ", "url": "https://feeds.reuters.com/reuters/businessNews", "category": "finance" },
+      { "label": "REUTERS TECH", "url": "https://feeds.reuters.com/reuters/technologyNews", "category": "tech" },
+      { "label": "MARKETWATCH", "url": "https://feeds.marketwatch.com/marketwatch/topstories", "category": "finance" }
+    ],
+    "max_headlines": 30,
+    "refresh_interval_minutes": 10
+  },
+  "placeholder": {
+    "label": "SYS"
+  }
+}

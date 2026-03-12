@@ -1,0 +1,46 @@
+.glass-panel {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 16px;
+  color: #ffffff;
+  font-family: var(--font-mono);
+}
+
+.glass-panel:hover {
+  border-color: rgba(0, 255, 255, 0.25);
+}
+
+.glass-panel .panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--cyan);
+}
+
+.glass-panel .panel-header .cache-indicator {
+  font-size: 9px;
+  color: var(--text-dim);
+}
+
+.glass-panel .refresh-btn {
+  background: none;
+  border: 1px solid var(--cyan-dim);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.glass-panel .refresh-btn:hover {
+  background: rgba(0, 255, 255, 0.1);
+}

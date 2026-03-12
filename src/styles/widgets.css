@@ -1,0 +1,342 @@
+/* Weather Widget */
+.weather-widget {
+  display: flex;
+  flex-direction: column;
+}
+
+.weather-widget .weather-main-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.weather-widget .temp-main {
+  font-size: 81px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.weather-widget .temp-feels {
+  font-size: 27px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+.weather-widget .condition {
+  font-size: 29px;
+  margin-top: 12px;
+  color: var(--cyan);
+  text-transform: uppercase;
+}
+
+.weather-widget .five-day {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.weather-widget .five-day-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.weather-widget .five-day-label {
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+
+.weather-widget .five-day-temps {
+  display: flex;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.weather-widget .five-day-hi {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.weather-widget .five-day-lo {
+  color: var(--text-dim);
+}
+
+.weather-widget .stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 18px;
+}
+
+.weather-widget .stats .stat-label {
+  color: var(--text-dim);
+}
+
+/* Weather Detail */
+.weather-detail .hourly-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 8px 0;
+  margin-bottom: 16px;
+}
+
+.weather-detail .hourly-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.weather-detail .panel-header {
+  font-size: 18px;
+}
+
+.weather-detail .hourly-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 18px;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.weather-detail .hourly-item .hour-temp {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 4px 0;
+}
+
+.weather-detail .hourly-item .hour-precip {
+  color: var(--cyan);
+  font-size: 16px;
+}
+
+.weather-detail .extended-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  font-size: 20px;
+}
+
+.weather-detail .extended-info .info-label {
+  color: var(--text-dim);
+}
+
+/* Sports Widget */
+.sports-widget .game-item {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 24px;
+}
+
+.sports-widget .game-item:last-child {
+  border-bottom: none;
+}
+
+.sports-widget .game-item .league-tag {
+  color: var(--cyan);
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+.sports-widget .game-item .game-score {
+  font-weight: 500;
+}
+
+.sports-widget .game-item .game-upcoming {
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.sports-widget .game-item .game-status {
+  color: var(--text-dim);
+  font-size: 20px;
+  margin-top: 4px;
+}
+
+/* Sports Detail */
+.sports-detail .league-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.sports-detail .league-tab {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  padding: 6px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.sports-detail .league-tab.active {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(0, 255, 255, 0.08);
+}
+
+.sports-detail .scoreboard-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 20px;
+}
+
+.sports-detail .scoreboard-item .teams {
+  flex: 1;
+}
+
+.sports-detail .scoreboard-item .score {
+  font-weight: 700;
+  font-size: 24px;
+  min-width: 100px;
+  text-align: right;
+}
+
+.sports-detail .scoreboard-item .game-state {
+  font-size: 16px;
+  color: var(--text-dim);
+  min-width: 100px;
+  text-align: right;
+}
+
+/* News Widget */
+.news-widget {
+  display: flex;
+  flex-direction: column;
+}
+
+.news-widget .headline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.news-widget .headline-item {
+  font-size: 18px;
+  line-height: 1.4;
+  cursor: pointer;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.news-widget .headline-item:hover {
+  color: var(--cyan);
+}
+
+.news-widget .headline-item .source-tag {
+  color: var(--cyan);
+  font-size: 14px;
+  margin-right: 6px;
+}
+
+/* News Detail */
+.news-detail {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.news-detail .article-header {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.news-detail .article-header .article-source {
+  color: var(--cyan);
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.news-detail .article-header .article-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 8px 0;
+  line-height: 1.3;
+}
+
+.news-detail .article-header .article-date {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.news-detail .article-body {
+  font-size: 18px;
+  line-height: 1.6;
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.news-detail .article-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.news-detail .article-nav button {
+  background: none;
+  border: 1px solid var(--cyan-dim);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  padding: 6px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.news-detail .article-nav button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* Placeholder Widget */
+.placeholder-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.placeholder-widget .placeholder-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: var(--cyan-dim);
+}
+
+/* Globe Widget */
+.globe-widget {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.globe-widget .globe-canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+}
