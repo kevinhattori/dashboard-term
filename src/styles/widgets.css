@@ -2,6 +2,7 @@
 .weather-widget {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .weather-widget .weather-main-row {
@@ -32,11 +33,17 @@
 
 .weather-widget .five-day {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-top: 12px;
   padding: 10px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.weather-widget .five-day::-webkit-scrollbar {
+  display: none;
 }
 
 .weather-widget .five-day-item {
@@ -44,6 +51,8 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  flex-shrink: 0;
+  min-width: 72px;
 }
 
 .weather-widget .five-day-label {
@@ -130,7 +139,49 @@
   color: var(--text-dim);
 }
 
+/* MN Team Logos */
+.sports-widget .mn-logos {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: auto;
+  padding-top: 8px;
+  padding-bottom: 4px;
+}
+
+.mn-logo-stage {
+  position: relative;
+  width: 224px;
+  height: 224px;
+}
+
+.mn-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: grayscale(1) contrast(1.4) sepia(1) saturate(6) hue-rotate(155deg) brightness(0.85);
+  transition: opacity 1s ease;
+}
+
+.mn-logo-visible {
+  opacity: 0.75;
+}
+
+.mn-logo-hidden {
+  opacity: 0;
+}
+
+.mn-logo:hover {
+  filter: grayscale(1) contrast(1.4) sepia(1) saturate(8) hue-rotate(155deg) brightness(1) drop-shadow(0 0 6px var(--cyan));
+}
+
 /* Sports Widget */
+.sports-widget {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .sports-widget .game-item {
   padding: 10px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);

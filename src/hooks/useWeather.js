@@ -34,7 +34,7 @@ export function useWeather(config) {
       `&hourly=temperature_2m,weather_code,precipitation_probability` +
       `&daily=sunrise,sunset,uv_index_max,temperature_2m_max,temperature_2m_min,weather_code` +
       `&temperature_unit=${config.units === 'fahrenheit' ? 'fahrenheit' : 'celsius'}` +
-      `&wind_speed_unit=mph&timezone=auto&forecast_days=5&models=best_match`
+      `&wind_speed_unit=mph&timezone=auto&forecast_days=10&models=best_match`
 
     try {
       const res = await fetch(url)

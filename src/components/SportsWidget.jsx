@@ -1,5 +1,8 @@
 import '../styles/widgets.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { WildLogo, TimberwolvesLogo, VikingsLogo } from './MNTeamLogos.jsx'
+
+const LOGOS = [WildLogo, TimberwolvesLogo, VikingsLogo]
 
 function CacheIndicator({ lastFetched }) {
   if (!lastFetched) return null
@@ -38,6 +41,15 @@ function formatGameLine(game) {
 }
 
 export function SportsCollapsed({ scores, nextGames = [], loading, config, lastFetched }) {
+  const [logoIndex, setLogoIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLogoIndex(i => (i + 1) % LOGOS.length)
+    }, 10000)
+    return () => clearInterval(interval)
+  }, [])
+
   if (loading && Object.keys(scores).length === 0) {
     return <div className="glass-panel sports-widget"><span className="cursor">▋</span> loading scores...</div>
   }
@@ -69,6 +81,13 @@ export function SportsCollapsed({ scores, nextGames = [], loading, config, lastF
           </div>
         ))
       )}
+      <div className="mn-logos">
+        <div className="mn-logo-stage">
+          {LOGOS.map((Logo, i) => (
+            <Logo key={i} size={224} className={i === logoIndex ? 'mn-logo-visible' : 'mn-logo-hidden'} />
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

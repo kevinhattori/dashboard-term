@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react'
 import '../styles/widgets.css'
 import WeatherIcon, { WeatherIconSmall } from './WeatherIcon.jsx'
 
@@ -8,7 +9,62 @@ function CacheIndicator({ lastFetched }) {
   return <span className="cache-indicator">[CACHED {ago}m ago]</span>
 }
 
+const SCROLL_SPEED_PX_PER_SEC = 40
+const PAUSE_MS = 3000
+
+function useFiveDayScroll(ref, itemCount) {
+  useEffect(() => {
+    if (itemCount === 0) return
+    let rafId
+    let phase = 'pause'
+    let phaseStart = Date.now()
+    let scrollAtPhaseStart = 0
+
+    function tick() {
+      const el = ref.current
+      if (!el) { rafId = requestAnimationFrame(tick); return }
+
+      const maxScroll = el.scrollWidth - el.clientWidth
+      if (maxScroll <= 0) { rafId = requestAnimationFrame(tick); return }
+
+      const now = Date.now()
+
+      if (phase === 'pause') {
+        if (now - phaseStart >= PAUSE_MS) {
+          phase = 'scroll'
+          phaseStart = now
+          scrollAtPhaseStart = el.scrollLeft
+        }
+      } else if (phase === 'scroll') {
+        const elapsed = (now - phaseStart) / 1000
+        const next = scrollAtPhaseStart + elapsed * SCROLL_SPEED_PX_PER_SEC
+        if (next >= maxScroll) {
+          el.scrollLeft = maxScroll
+          phase = 'end-pause'
+          phaseStart = now
+        } else {
+          el.scrollLeft = next
+        }
+      } else if (phase === 'end-pause') {
+        if (now - phaseStart >= PAUSE_MS) {
+          el.scrollLeft = 0
+          phase = 'pause'
+          phaseStart = now
+        }
+      }
+
+      rafId = requestAnimationFrame(tick)
+    }
+
+    rafId = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(rafId)
+  }, [ref, itemCount])
+}
+
 export function WeatherCollapsed({ data, loading, error, lastFetched, refresh }) {
+  const fiveDayRef = useRef(null)
+  useFiveDayScroll(fiveDayRef, data?.daily?.time?.length ?? 0)
+
   if (loading && !data) return <div className="glass-panel weather-widget"><span className="cursor">▋</span> loading weather...</div>
 
   if (!data) return (
@@ -34,7 +90,7 @@ export function WeatherCollapsed({ data, loading, error, lastFetched, refresh })
       </div>
       <div className="condition">{data.condition}</div>
       {data.daily && (
-        <div className="five-day">
+        <div className="five-day" ref={fiveDayRef}>
           {data.daily.time.map((day, i) => {
             const d = new Date(day + 'T00:00')
             const label = i === 0 ? 'TODAY' : ['SUN','MON','TUE','WED','THU','FRI','SAT'][d.getDay()]

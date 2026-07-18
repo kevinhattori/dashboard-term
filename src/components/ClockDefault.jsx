@@ -3,6 +3,18 @@ import { useState, useEffect } from 'react'
 const DAYS = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
 
+function formatTZ(date, timeZone) {
+  const parts = new Intl.DateTimeFormat('en-AU', {
+    hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true, timeZone
+  }).formatToParts(date)
+  const get = type => parts.find(p => p.type === type)?.value ?? ''
+  const h = get('hour').padStart(2, '0')
+  const m = get('minute').padStart(2, '0')
+  const s = get('second').padStart(2, '0')
+  const ampm = get('dayPeriod').toUpperCase()
+  return { time: `${h}:${m}:${s}`, ampm }
+}
+
 export default function ClockDefault() {
   const [now, setNow] = useState(new Date())
 
@@ -21,8 +33,19 @@ export default function ClockDefault() {
   const month = MONTHS[now.getMonth()]
   const year = now.getFullYear()
 
+  const utc = formatTZ(now, 'UTC')
+  const syd = formatTZ(now, 'Australia/Sydney')
+
   return (
     <div className="clock-display">
+      <div className="clock-tz clock-tz-left">
+        <div className="clock-tz-label">UTC</div>
+        <div className="clock-tz-time">{utc.time} <span className="clock-tz-ampm">{utc.ampm}</span></div>
+      </div>
+      <div className="clock-tz clock-tz-right">
+        <div className="clock-tz-label">SYDNEY</div>
+        <div className="clock-tz-time">{syd.time} <span className="clock-tz-ampm">{syd.ampm}</span></div>
+      </div>
       <div className="clock-time">
         {h24}:{minutes}:{seconds}<span className="cursor">▋</span>
       </div>
