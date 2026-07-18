@@ -1,8 +1,8 @@
 import '../styles/widgets.css'
 import { useState, useEffect } from 'react'
-import { WildLogo, TimberwolvesLogo, VikingsLogo } from './MNTeamLogos.jsx'
+import { WildLogo, TimberwolvesLogo, VikingsLogo, LynxLogo } from './MNTeamLogos.jsx'
 
-const LOGOS = [WildLogo, TimberwolvesLogo, VikingsLogo]
+const LOGOS = [WildLogo, TimberwolvesLogo, VikingsLogo, LynxLogo]
 
 function CacheIndicator({ lastFetched }) {
   if (!lastFetched) return null

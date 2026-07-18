@@ -4,7 +4,8 @@ const SPORT_MAP = {
   nfl: { sport: 'football', league: 'nfl' },
   nba: { sport: 'basketball', league: 'nba' },
   nhl: { sport: 'hockey', league: 'nhl' },
-  mlb: { sport: 'baseball', league: 'mlb' }
+  mlb: { sport: 'baseball', league: 'mlb' },
+  wnba: { sport: 'basketball', league: 'wnba' }
 }
 
 function parseGames(events, primaryTeams) {

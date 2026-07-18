@@ -10,9 +10,10 @@
     "primary_teams": [
       { "name": "Timberwolves", "league": "nba", "espn_id": "MIN" },
       { "name": "Wild", "league": "nhl", "espn_id": "MIN" },
-      { "name": "Vikings", "league": "nfl", "espn_id": "MIN" }
+      { "name": "Vikings", "league": "nfl", "espn_id": "MIN" },
+      { "name": "Lynx", "league": "wnba", "espn_id": "MIN" }
     ],
-    "leagues": ["nfl", "nba", "nhl"],
+    "leagues": ["nfl", "nba", "nhl", "wnba"],
     "refresh_interval_minutes": 2
   },
   "news": {
